@@ -1,3 +1,7 @@
+/*
+
+*/
+
 #ifndef PRINT_H
 #define PRINT_H
 
@@ -9,7 +13,7 @@ using std::queue;
 class Print
 {
 	public:
-		void PutStringQueue(queue<string> q);
+		void PutStringQueue(queue<string> Wque);
 	protected:
 };
 

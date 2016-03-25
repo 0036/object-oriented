@@ -1,3 +1,7 @@
+/*
+	
+*/
+
 #ifndef SCAN_H
 #define SCAN_H
 
@@ -11,7 +15,7 @@ class Scan
 	public:
 		queue<string> ToStringQueue(string input);
 	protected:
-		queue<string> q;//被处理队列 
+		queue<string> Wque; //工作队列 
 };
 
 #endif
