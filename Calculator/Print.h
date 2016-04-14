@@ -1,5 +1,10 @@
 /*
-
+	PutStringQueue：
+		Description:输出队列 
+		input:工作队列 
+		output:逐个输出队列元素，一行一个 
+		return:
+			0:正常返回 
 */
 
 #ifndef PRINT_H
@@ -9,11 +14,13 @@
 using std::string;
 #include<queue>
 using std::queue;
+#include<iostream>
+using std::cout;
 
 class Print
 {
 	public:
-		void PutStringQueue(queue<string> Wque);
+		int PutStringQueue(queue<string> Wque);
 	protected:
 };
 
