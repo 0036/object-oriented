@@ -2,7 +2,7 @@
 
 double Calculation::GetAns(queue<string> Wque){
 	stringstream sstr;
-	int d;
+	double d;
 	char c;
 	string str;
 	char k;

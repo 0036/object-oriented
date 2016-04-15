@@ -16,6 +16,7 @@ using std::string;
 using std::queue;
 #include<iostream>
 using std::cout;
+using std::endl;
 
 class Print
 {

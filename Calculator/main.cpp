@@ -14,6 +14,7 @@
 		0036/160228/1.0/创立,添加Scan,Print 
 		0036/160326/1.1/参照代码规范部分修改 
 		0036/160411/2.0/添加Calculation 
+		0036/160411/2.6/修改Scan，支持不合法输入并报错 
 */
 
 #include<iostream>
@@ -34,12 +35,12 @@ int main(int argc,char* argv[]){
 		Calculation Cal;
 		cin>>input;
 		Wque=Sc.ToStringQueue(input);
-		cout<<input<<"= "<<Cal.GetAns(Wque)<<endl;	
+		if(!Wque.empty()) cout<<input<<"= "<<Cal.GetAns(Wque)<<endl;	
 	}else{
 		Scan Sc;
 		Calculation Cal;
 		Wque=Sc.ToStringQueue(input);
-		cout<<Cal.GetAns(Wque)<<endl;
+		if(!Wque.empty()) cout<<Cal.GetAns(Wque)<<endl;
 	}
 	return 0;
 }
