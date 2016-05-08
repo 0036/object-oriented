@@ -1,6 +1,22 @@
 #include "Scan.h"
 
+queue<string> Scan::FileToString(string finput){
+	while(!Fque.empty()) Fque.pop();
+	
+	prc(&finput[0],finput.size());	
+	fstream file(finput.c_str());	
+	string a;
+	while(!file.eof()){
+		file>>a;
+		Fque.push(a);
+	}
+	file.close();
+	return Fque;
+}
+
 queue<string> Scan::ToStringQueue(string input){
+	while(!Wque.empty()) Wque.pop();
+	
 	int k=1,s=0,kk; 
 	string t;
 	int n=input.size();
@@ -50,7 +66,7 @@ queue<string> Scan::ToStringQueue(string input){
 			}else if(k==2){
 				Error(4);
 				return Wque;
-			}
+			}else k=1;
 			//判断合法性 
 			Wque.push(t);
 			i++;
@@ -67,24 +83,26 @@ queue<string> Scan::ToStringQueue(string input){
 	return Wque;
 }
 
-int Scan::Error(int i){
-	if(i==1){
-		cout<< "\nerror01:输入的数字超过10位" << endl;
-		while(!Wque.empty()) Wque.pop();
-	}else if(i==2){
-		cout<< "\nerror02:输入不合法字符" << endl;
-		while(!Wque.empty()) Wque.pop();		
-	}else if(i==3){
-		cout<< "\nerror03:输入括号不匹配" << endl;
-		while(!Wque.empty()) Wque.pop();		
-	}else if(i==4){
-		cout<< "\nerror04:输入运算符不合法" << endl;
-		while(!Wque.empty()) Wque.pop();		
-	}else if(i==5){
-		cout<< "\nerror05:输入数字不合法" << endl;
-		while(!Wque.empty()) Wque.pop();		
+int Scan::prc(char* s,int n){
+	for(int i=0;i<n;i++){
+		if(s[i]=='\\') s[i]='/';
 	}
-	
+	return 1;
+}
+
+int Scan::Error(int i){
+	while(!Wque.empty()) Wque.pop();
+	if(i==1){
+		Wque.push("error01:输入的数字超过10位");
+	}else if(i==2){
+		Wque.push("error02:输入不合法字符");
+	}else if(i==3){
+		Wque.push("error03:输入括号不匹配");	
+	}else if(i==4){
+		Wque.push("error04:输入运算符不合法");	
+	}else if(i==5){
+		Wque.push("error05:输入数字不合法");
+	}
 	return i;
 }
 

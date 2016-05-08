@@ -1,10 +1,14 @@
 /*
+	AnsToFile：
+		Description:文件输出 
+		return:
+			1.1:正常返回  
+		about： 
+			1.prc/F/转化操作 
 	PutStringQueue：
 		Description:输出队列 
-		input:工作队列 
-		output:逐个输出队列元素，一行一个 
 		return:
-			0:正常返回 
+			1.1:正常返回 
 */
 
 #ifndef PRINT_H
@@ -17,12 +21,16 @@ using std::queue;
 #include<iostream>
 using std::cout;
 using std::endl;
+#include<fstream>
+using std::fstream;
 
 class Print
 {
 	public:
 		int PutStringQueue(queue<string> Wque);
+		int AnsToFile(queue<string> Fque,string foutput);
 	protected:
+		int prc(char* s,int n);
 };
 
 #endif

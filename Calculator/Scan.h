@@ -1,17 +1,18 @@
 /*
+	FileToString：
+		Description:文件输入
+		return：
+			1.Fque：目标队列 
+		about：
+			1.prc/F/转化操作	 
 	ToStringQueue：
 		Description:获得工作队列
-		input:整串string的输入算式
-		output:工作队列 
 		return:
-			工作队列:正常返回
-			空队列:数字超过十位	
-	Error:
-		Description:报错 
-		input:报错类型，int 
-		output:错误 
-		return:
-			输入int:正常返回			
+			1.Wque:工作队列 
+			2.单个error字符串：报错 
+		about：
+			1.Error/F/报错 
+				
 */
 
 #ifndef SCAN_H
@@ -24,14 +25,20 @@ using std::queue;
 #include<iostream>
 using std::cout;
 using std::endl;
+#include<fstream>
+using std::fstream;
 
 class Scan
 {
 	public:
+		queue<string> FileToString(string finput);
 		queue<string> ToStringQueue(string input);
-		int Error(int i);
 	protected:
-		queue<string> Wque; //工作队列 
+		int prc(char* s,int n);
+		int Error(int i);
+		queue<string> Wque; 
+		queue<string> Fque;
+		
 };
 
 #endif

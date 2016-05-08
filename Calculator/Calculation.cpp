@@ -1,6 +1,9 @@
 #include "Calculation.h"
 
-double Calculation::GetAns(queue<string> Wque){
+string Calculation::GetAns(queue<string> Wque){
+	while(!sd.empty()) sd.pop();
+	while(!sc.empty()) sc.pop();
+	
 	stringstream sstr;
 	double d;
 	char c;
@@ -25,7 +28,12 @@ double Calculation::GetAns(queue<string> Wque){
 		}
 	}
 	cal(')');
-	return sd.top();
+	
+	sstr.clear();
+	sstr.str("");
+	sstr<<sd.top();
+	str=sstr.str();
+	return str;
 }
 
 int Calculation::getc(char c){
