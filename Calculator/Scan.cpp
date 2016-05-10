@@ -20,7 +20,7 @@ queue<string> Scan::ToStringQueue(string input){
 	int k=1,s=0,kk; 
 	string t;
 	int n=input.size();
-	for(int i=0;i<n;){
+	for(int i=0;i<n-1;){
 		if( (input[i]<='9'&&input[i]>='0')||input[i]=='.' ){
 			kk=0;
 			t=input[i];
@@ -80,6 +80,9 @@ queue<string> Scan::ToStringQueue(string input){
 	}else if(s>0){
 		Error(3);
 	}
+	if(input[n-1]!='='){
+		Error(0);
+	}
 	return Wque;
 }
 
@@ -102,6 +105,8 @@ int Scan::Error(int i){
 		Wque.push("error04:输入运算符不合法");	
 	}else if(i==5){
 		Wque.push("error05:输入数字不合法");
+	}else if(i==0){
+		Wque.push("error00:输入无等号");
 	}
 	return i;
 }

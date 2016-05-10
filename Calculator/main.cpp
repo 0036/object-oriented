@@ -14,6 +14,7 @@
 		0036/160411/2.0/添加Calculation 
 		0036/160411/2.6/修改Scan，支持不合法输入并报错 
 		0036/160508/3.0/支持-f，修改注释 
+		0036/160510/3.0/修改输入 
 */
 
 #include<iostream>
@@ -53,7 +54,7 @@ int main(int argc,char* argv[]){
 		cin>>input;
 		Wque=Sc.ToStringQueue(input);
 		if( (Wque.front())[0]=='e' ) cout<<Wque.front()<<endl;
-		else cout<<input<<"= "<<Cal.GetAns(Wque)<<endl;
+		else cout<<input<<" "<<Cal.GetAns(Wque)<<endl;
 			
 	}else{
 		Scan Sc;
@@ -61,7 +62,6 @@ int main(int argc,char* argv[]){
 		Wque=Sc.ToStringQueue(input);
 		if( (Wque.front())[0]=='e' ) cout<<Wque.front()<<endl;
 		else cout<<Cal.GetAns(Wque)<<endl;
-		
 	}
 	return 0;
 }
