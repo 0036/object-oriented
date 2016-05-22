@@ -2,7 +2,7 @@
 	Name:Calculator
 	Author:0036
 	Description:C++计算器
-	version:1.1
+	version:3.2
 	class List:
 		Scan:文件输入及预处理 
 		Print:文件等输出操作 
@@ -14,54 +14,43 @@
 		0036/160411/2.0/添加Calculation 
 		0036/160411/2.6/修改Scan，支持不合法输入并报错 
 		0036/160508/3.0/支持-f，修改注释 
-		0036/160510/3.0/修改输入 
+		0036/160510/3.1/修改输入 
+		0036/160522/3.2/修改代码规范，修改Print支持输出，修改报错,支持命令行
 */
-
-#include<iostream>
-using std::cin;
-using std::cout;
-using std::endl;
 
 #include"Scan.h"
 #include"Print.h"
 #include "Calculation.h"
 
 int main(int argc,char* argv[]){
-	queue<string> Wque;
-	string input; 
-	cin>>input;
+	queue<string> wque;
+	string input=argv[1]; 
+	Scan Sc;
+	Print Pr;
+	Calculation Cal;
+	
 	if(input=="-f"){
 		queue<string> inque;
 		queue<string> outque;
-		Scan Sc;
-		Print Pr;
-		Calculation Cal;
-		cin>>input;
+		
+		input=argv[argc-2];
 		inque=Sc.FileToString(input);
 		while(!inque.empty()){
-			Wque=Sc.ToStringQueue(inque.front());
+			wque=Sc.ToStringQueue(inque.front());
 			inque.pop();
-			if( (Wque.front())[0]=='e' ) outque.push(Wque.front());
-			else outque.push(Cal.GetAns(Wque));
+			outque.push(Cal.GetAns(wque));
 		}
-		
-		cin>>input;
+		input=argv[argc-1];
 		Pr.AnsToFile(outque,input);
 		
 	}else if(input=="-a"){
-		Scan Sc;
-		Calculation Cal;
-		cin>>input;
-		Wque=Sc.ToStringQueue(input);
-		if( (Wque.front())[0]=='e' ) cout<<Wque.front()<<endl;
-		else cout<<input<<" "<<Cal.GetAns(Wque)<<endl;
-			
+		input=argv[argc-1];
+		wque=Sc.ToStringQueue(input);
+		Pr.PutAns(Cal.GetAns(wque),input);	
 	}else{
-		Scan Sc;
-		Calculation Cal;
-		Wque=Sc.ToStringQueue(input);
-		if( (Wque.front())[0]=='e' ) cout<<Wque.front()<<endl;
-		else cout<<Cal.GetAns(Wque)<<endl;
+		
+		wque=Sc.ToStringQueue(input);
+		Pr.PutAns(Cal.GetAns(wque));
 	}
 	return 0;
 }

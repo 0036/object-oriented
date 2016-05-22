@@ -1,29 +1,34 @@
 #include "Print.h"
 
-int Print::AnsToFile(queue<string> Fque,string foutput){
+void Print::PutAns(string ans){
+	cout<<ans<<endl;
+};
+
+void Print::PutAns(string ans,string input){
+	cout<<input<<" "<<ans<<endl;
+};
+
+void Print::AnsToFile(queue<string> fque,string foutput){
 	
 	prc(&foutput[0],foutput.size());	
-	fstream file(foutput.c_str());	
-	while(!Fque.empty()){
-		file<<Fque.front()<<endl;
-		Fque.pop();
+	ofstream file(foutput.c_str());	
+	while(!fque.empty()){
+		file<<fque.front()<<endl;
+		fque.pop();
 	}
 	file.close();
 	
-	return 1;
 };
 
-int Print::PutStringQueue(queue<string> Wque){
-	while(!Wque.empty()){
-		cout<<Wque.front()<<endl;
-		Wque.pop();
+void Print::PutStringQueue(queue<string> wque){
+	while(!wque.empty()){
+		cout<<wque.front()<<endl;
+		wque.pop();
 	}
-	return 1;
 };
 
-int Print::prc(char* s,int n){
+void Print::prc(char* s,int n){
 	for(int i=0;i<n;i++){
 		if(s[i]=='\\') s[i]='/';
 	}
-	return 1;
 }

@@ -8,6 +8,7 @@
 			2.getc/F/获得符号优先级 
 			3.sd/stack/暂存数字及中间值 
 			4.sc/stack/暂存符号 
+			5.error/F/报错 
 */
 
 #ifndef CALCULATION_H
@@ -25,8 +26,9 @@ using std::stringstream;
 class Calculation
 {
 	public:
-		string GetAns(queue<string> Wque);
+		string GetAns(queue<string> wque);
 	protected:
+		void error();
 		char cal(char c);
 		int getc(char c);
 		stack<double> sd;
